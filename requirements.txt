@@ -1,0 +1,7 @@
+asyncio
+starlette
+uvicorn
+fastapi
+pydantic
+asyncpg
+tortoise-orm
