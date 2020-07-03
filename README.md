@@ -3,6 +3,8 @@
 We have a simple web app with fastapi in port 80. 
 first we push it to docker-registery and config daemon.json then use minikube to deploy it.
 
+Read the story at [Medium](https://medium.com/@sdamoosavi/part2-deploy-a-more-complex-web-application-with-kubernetes-dc6ea2ad6c8d)
+
 ## Daemon
 
 find gateway:
