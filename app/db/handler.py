@@ -5,7 +5,10 @@ from datetime import datetime
 
 class pgQuery:
     def __init__(self):
-        self.db_url = getenv("POSTGRES_URL")
+        self.db_url = getenv(
+            "POSTGRES_URL",
+            "postgres://user:password@postgresql-svc.default.svc.cluster.local:5432/testdb",
+        )
 
     async def saveData(self, database, username, password):
 

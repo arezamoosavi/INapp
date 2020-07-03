@@ -6,11 +6,17 @@ from tortoise import Tortoise
 from db.models import userstatus
 
 """
-POSTGRES_URL=postgres://user:password@postgres:5432/db
+URL= postgresql-svc.default.svc.cluster.local:5432
+POSTGRES_URL=postgresql://user:password@postgresql-svc.default.svc.cluster.local:5432/testdb
 """
+
+
 class TorPostgre:
     def __init__(self):
-        self.db_url = getenv("POSTGRES_URL")
+        self.db_url = getenv(
+            "POSTGRES_URL",
+            "postgres://user:password@postgresql-svc.default.svc.cluster.local:5432/testdb",
+        )
 
     async def initdb(self):
         await Tortoise.init(db_url=self.db_url, modules={"models": ["db.models"]})
@@ -23,7 +29,10 @@ class TorPostgre:
 
 class Postgres:
     def __init__(self):
-        self.db_url = getenv("POSTGRES_URL")
+        self.db_url = getenv(
+            "POSTGRES_URL",
+            "postgres://user:password@postgresql-svc.default.svc.cluster.local:5432/testdb",
+        )
 
     async def checkConnection(self):
         conn = await asyncpg.connect(self.db_url)

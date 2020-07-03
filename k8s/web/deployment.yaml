@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: signapp
+  name: signapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: signapp
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: signapp
+    spec:
+      containers:
+        - image: 10.10.0.1:5000/signapp:v1
+          name: signapp
+          env:
+            - name: POSTGRES_URL
+              value: postgres://user:password@postgresql-svc.default.svc.cluster.local:5432/testdb
+          resources: {}
+status: {}
